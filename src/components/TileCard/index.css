@@ -1,0 +1,21 @@
+.tile-button {
+  border: 3px solid #000;
+  width: 90px;
+  height: 70px;
+  margin: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  font-size: 45px;
+}
+@media screen and (max-width: 576px) {
+  .tile-button {
+    width: 60px;
+    height: 50px;
+    margin: 5px;
+    font-size: 32px;
+  }
+}

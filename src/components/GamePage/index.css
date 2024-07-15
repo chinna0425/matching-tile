@@ -1,0 +1,104 @@
+.game-page-main-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.game-page-second-container {
+  width: 80%;
+  height: 95%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 576px) {
+  .game-page-second-container {
+    width: 90%;
+    min-height: auto;
+  }
+}
+.gamepage-name-heading {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Roboto";
+  margin-bottom: 0px;
+}
+@media screen and (max-width: 576px) {
+  .gamepage-name-heading {
+    font-size: 24px;
+  }
+}
+.score-time-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.score-card-time {
+  font-size: 18px;
+  font-family: "Roboto";
+  font-weight: 700;
+}
+.game-card-container {
+  border: 3px solid #000;
+  width: 90%;
+  height: 80%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 576px) {
+  .game-card-container {
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .game-card-container {
+    height: 85%;
+  }
+}
+
+.game-card-name-heading {
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 600;
+  text-align: end;
+  padding-right: 5px;
+  text-decoration: underline;
+  margin: 0px;
+}
+@media screen and (max-width: 576px) {
+  .game-card-name-heading {
+    text-align: center;
+  }
+}
+.unordered-game-card {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 90%;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+  .unordered-game-card {
+    padding-bottom: 20px;
+    height: 90%;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .unordered-game-card {
+    height: 90%;
+  }
+}
