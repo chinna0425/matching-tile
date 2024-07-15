@@ -16,16 +16,16 @@ class GamePage extends Component {
       minutes: 0,
       seconds: 0,
     };
-    this.uniqueId1 = setInterval(this.tick1, 1000);
   }
 
   componentDidMount() {
     this.fillTheTiles();
+    this.setTimer();
   }
-  /* 
 
-  
-  */
+  componentWillUnmount() {
+    clearInterval(this.uniqueId1);
+  }
 
   fillTheTiles = async () => {
     const emojis = [
@@ -54,20 +54,29 @@ class GamePage extends Component {
     this.setState({ tilesList: listEmojis });
   };
 
+  setTimer = () => {
+    this.uniqueId1 = setInterval(this.tick1, 1000);
+  };
+
   tick1 = () => {
-    const { matchedList, seconds, tilesList, minutes, count } = this.state;
-    this.setState((prev) => {
-      if (matchedList.length === tilesList.length) {
-        clearInterval(this.uniqueId1);
-        const { history } = this.props;
-        history.replace("/scorecard", { count, seconds, minutes });
-        window.location.reload();
-        return { seconds: 0, minutes: 0, matchedList: [] };
-      } else if (prev.seconds === 59) {
-        return { seconds: 0, minutes: prev.minutes + 1 };
-      }
-      return { seconds: prev.seconds + 1 };
-    });
+    const { matchedList, seconds, minutes, count } = this.state;
+    if (matchedList.length === 32) {
+      clearInterval(this.uniqueId1);
+      const { history } = this.props;
+      history.replace("/scorecard", { count, seconds, minutes });
+      window.location.reload();
+      this.setState({ matchedList: [] });
+    } else {
+      this.setState((prev) => {
+        let updatedSec = prev.seconds + 1;
+        let updatedMin = prev.minutes;
+        if (updatedSec === 59) {
+          updatedSec = 0;
+          updatedMin++;
+        }
+        return { minutes: updatedMin, seconds: updatedSec };
+      });
+    }
   };
 
   checkTheMatch = (id) => {
@@ -84,16 +93,13 @@ class GamePage extends Component {
           count: prev.count + 1,
         }));
       } else {
-        this.uniqueId = setInterval(this.tick, 1000);
+        this.uniqueId = setTimeout(this.tick, 1000);
       }
     }
   };
   tick = () => {
-    const c = 1;
-    if (c === 1) {
-      clearInterval(this.uniqueId);
-      this.setState((prev) => ({ appearedEmoji: [], count: prev.count - 1 }));
-    }
+    clearTimeout(this.uniqueId);
+    this.setState((prev) => ({ appearedEmoji: [], count: prev.count - 1 }));
   };
 
   render() {
