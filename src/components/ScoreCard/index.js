@@ -16,7 +16,7 @@ const ScoreCard = (props) => {
     return <Redirect to="/" />;
   }
   if (state === undefined) {
-    return <Redirect to="/Gamepage" />;
+    return <Redirect to="/gamepage" />;
   }
   const { count, seconds, minutes } = state;
   console.log(history.location.state);

@@ -82,9 +82,8 @@ class GamePage extends Component {
   checkTheMatch = (id) => {
     const { tilesList, matchedList, appearedEmoji } = this.state;
     appearedEmoji.push(id);
-    console.log(appearedEmoji.length);
     this.setState({ appearedEmoji });
-    if (appearedEmoji.length === 2) {
+    if (appearedEmoji.length === 32) {
       if (tilesList[appearedEmoji[0]] === tilesList[appearedEmoji[1]]) {
         matchedList.push(appearedEmoji[0], appearedEmoji[1]);
         this.setState((prev) => ({

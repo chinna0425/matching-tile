@@ -19,14 +19,15 @@ class WelcomePage extends Component {
     } else {
       localStorage.setItem("username", name);
       const { history } = this.props;
-      history.replace("/Gamepage");
+      history.replace("/gamepage");
+      window.location.reload();
     }
   };
 
   render() {
     const { name, ErrorMsg } = this.state;
     if (username !== null) {
-      return <Redirect to="/Gamepage" />;
+      return <Redirect to="/gamepage" />;
     }
     return (
       <div className="welcome-main-container">
